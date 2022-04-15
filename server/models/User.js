@@ -22,7 +22,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       trim: true,
-      minlength: 5
+      minlength: 8
     },
     // set savedBooks to be an array of data that adheres to the bookSchema
     savedBooks: [bookSchema],

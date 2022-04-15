@@ -30,6 +30,11 @@ const bookSchema = new Schema({
     required: true,
     trim: true
   },
+},
+{
+  toJSON: {
+    getters: true
+  }
 });
 
 module.exports = bookSchema;
