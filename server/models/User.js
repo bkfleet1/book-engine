@@ -9,16 +9,20 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      trim: true
     },
     email: {
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
+      trim: true,
+      match: [/.+@.+\..+/, 'Must match an email address!']
     },
     password: {
       type: String,
       required: true,
+      trim: true,
+      minlength: 5
     },
     // set savedBooks to be an array of data that adheres to the bookSchema
     savedBooks: [bookSchema],
@@ -31,15 +35,6 @@ const userSchema = new Schema(
   }
 );
 
-// hash user password
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(this.password, saltRounds);
-  }
-
-  next();
-});
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {

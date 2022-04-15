@@ -10,6 +10,7 @@ const bookSchema = new Schema({
   description: {
     type: String,
     required: true,
+    trim: true
   },
   // saved book id from GoogleBooks
   bookId: {
@@ -18,13 +19,16 @@ const bookSchema = new Schema({
   },
   image: {
     type: String,
+    trim: true
   },
   link: {
     type: String,
+    trim: true
   },
   title: {
     type: String,
     required: true,
+    trim: true
   },
 });
 
